@@ -1,0 +1,201 @@
+{
+    "name": "token",
+    "token": "WvxKJl4e6fbjIPstEXPLPE6kQU33KCvC",
+    "request_id": 0
+}
+
+{
+    "name": "token_valid",
+    "nick": "LastOliveGames",
+    ...
+}
+
+{
+    "name": "get_project_list",
+    "request_id": 1
+}
+
+{
+    "name": "project_list",
+    "list": [
+        {
+            "id": 424778,
+            "owner": {
+                "id": 186062,
+                "nick": "LastOliveGames"
+            },
+            "title": "Picker Panic",
+            "slug": "pickerpanic",
+            "code": "N7X3P328",
+            "description": "",
+            "tags": [],
+            "flags": {},
+            "poster": false,
+            "platforms": [
+                "computer",
+                "phone",
+                "tablet"
+            ],
+            "controls": [
+                "touch",
+                "mouse"
+            ],
+            "type": "app",
+            "orientation": "any",
+            "aspect": "free",
+            "graphics": "M1",
+            "language": "javascript",
+            "libs": [],
+            "tabs": {
+                "assets": true,
+                "sync": false
+            },
+            "libraries": {
+                "425601": {
+                    "active": true
+                }
+            },
+            "networking": false,
+            "properties": {},
+            "date_created": 1740788461065,
+            "last_modified": 1741075684241,
+            "public": false,
+            "size": 299963,
+            "users": [
+                {
+                    "id": 186098,
+                    "nick": "Potato_Chip",
+                    "accepted": true
+                }
+            ]
+        },
+        ...
+    ],
+    "request_id": 1
+}
+
+{
+    "name": "list_project_files",
+    "project": 424778,
+    "folder": "ms",  // 'sprites', 'maps', 'sounds', 'music', 'assets'
+    "request_id": 9
+}
+
+{
+    "name": "list_project_files",
+    "files": [
+        {
+            "file": "components.ms",
+            "version": 41,
+            "size": 359,
+            "properties": {}
+        },
+        {
+            "file": "lib-lastolivegames-becsy-main.ms",
+            "version": 13,
+            "size": 295523,
+            "properties": {}
+        },
+        {
+            "file": "logic_systems.ms",
+            "version": 44,
+            "size": 1211,
+            "properties": {}
+        },
+        {
+            "file": "render_systems.ms",
+            "version": 36,
+            "size": 617,
+            "properties": {}
+        },
+        {
+            "file": "zz_main.ms",
+            "version": 125,
+            "size": 1158,
+            "properties": {}
+        }
+    ],
+    "request_id": 9
+}
+
+{
+    "name": "read_project_file",
+    "project": 424778,
+    "file": "doc/doc.md",
+    "request_id": 15
+}
+
+{
+    "name": "read_project_file",
+    "content": "let frame, logicSystems, renderSystems;\n\nasync function init() {\n  try {\n    const components = initComponents();\n    logicSystems = initLogicSystems();\n    renderSystems = initRenderSystems();\n    \n    const world = await becsy.World.create({defs: [\n      components, logicSystems, renderSystems\n    ]});\n    frame = world.createCustomExecutor(logicSystems, renderSystems);\n    \n    world.createEntity(\n      Sprite, {name: 'icon', size: 16},\n      Position, {x: 0, y: 0},\n      Velocity, {x: Math.random() * 50 - 25, y: Math.random() * 50 - 25},\n    );\n      \n  } catch (e) {\n    print(`INIT FAILED: ${e.stack}`);\n  }\n}\n\nasync function update() {\n  if (!frame || !logicSystems) return;\n  try {\n    frame.begin();\n    frame.execute(logicSystems);\n    frame.end();\n  } catch (e) {\n    print(`UPDATE FAILED: ${e.stack}`);\n  }\n}\n\nasync function draw() {\n  if (!frame || !renderSystems) return;\n  try {\n    frame.begin();\n    frame.execute(renderSystems);\n    frame.end();\n  } catch (e) {\n    print(`DRAW FAILED: ${e.stack}`);\n  }\n}\n\nfunction globalize(...declarations) {\n  for (const decl of declarations) globalThis[decl.name] = decl;\n  return declarations;\n}",
+    "request_id": 20
+}
+
+{
+    "name": "lock_project_file",
+    "project": 424778,
+    "file": "ms/components.ms",
+    "request_id": 43
+}
+
+{
+    "name": "write_project_file",
+    "project": 424778,
+    "file": "ms/components.ms",
+    "characters": 1,
+    "lines": 0,
+    "content": "function initComponents() {return globalize(\n\nclass Sprite {\n  static schema = {\n    name: becsy.Type.dynamicString(16),\n    size: becsy.Type.uint16,\n  }\n},\n\nclass Position {\n  static schema = {\n    x: becsy.Type.float64,\n    y: becsy.Type.float64,\n  }\n},\n\nclass Velocity {\n  static schema = {\n    x: becsy.Type.float64,\n    y: becsy.Type.float64,\n  }\n},\n \n)}\n",
+    "request_id": 44
+}
+
+{
+    "name": "write_project_file",
+    "version": 45,
+    "size": 361,
+    "request_id": 186
+}
+
+{
+    "name": "delete_project_file",
+    "project": 425601,
+    "file": "ms/source.ms",
+    "thumbnail": false,
+    "request_id": 58
+}
+
+{
+    "name": "delete_project_file",
+    "request_id": 58
+}
+
+{
+    "name": "ping",   // 10s intervals
+    "request_id": 22
+}
+
+{
+    "name": "pong"
+}
+
+
+
+{
+  "name": "project_file_locked",
+  "project": 424778,
+  "file": "ms/components.ms",
+  "user": "LastOliveGames"
+}
+
+{
+  "name": "project_file_update",
+  "project": 424778,
+  "file": "ms/components.ms",
+  "version": 44,
+  "content": "function initComponents() {return globalize(\n\nclass Sprite {\n  static schema = {\n    name: becsy.Type.dynamicString(16),\n    size: becsy.Type.uint16,\n  }\n},\n\nclass Position {\n  static schema = {\n    x: becsy.Type.float64,\n    y: becsy.Type.float64,\n  }\n},\n\nclass Velocity {\n  static schema = {\n    x: becsy.Type.float64,\n    y: becsy.Type.float64,\n  }\n},\n\n)}\n "
+}
+
+{
+    "name": "project_file_deleted",
+    "project": 425601,
+    "file": "ms/source.ms"
+}
